@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Pastel Crayon';
-  src: url('/js/pastel.ttf') format('truetype'); /* Replace 'path/to/pastel-crayon.ttf' with the actual path to the font file */
-  /* You may also include additional src declarations for other font formats like woff, woff2, etc. */
+  src: url('/js/pastel.ttf') format('truetype'); 
 }
 
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Pastel Crayon';
   margin: 0;
   padding: 0;
   position: relative;
@@ -14,150 +14,10 @@ body {
   background-image: url("/images/paper.png");
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-#hearts-gif {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px; 
-  z-index: 2;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-185%, -285.1%);
-  margin-bottom: 20px;
-}
-
-#logo {
-  max-width: 350px;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-49%, -90.1%);
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-.search-bar-container {
-  position: absolute;
-  top: 64.7%;
-  left: 50%;
-  transform: translate(-71%, -132%);
-  width: 100%;
-  max-width: 130px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  z-index: 3;
-}
-
-.search-bar {
-  font-family: 'Pastel Crayon', sans-serif;
-  flex: 1;
-  padding: 10px;
-  font-size: 17px;
-  border: 0px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  background-color: transparent;
-  background-image: url('/images/box.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: calc(0.8 * 256px); /* Width of the image */
-  height: calc(0.8 * 62px); /* Height of the image */
-  color: #6C8EBF; /* Pastel pink text color */
-}
-
-.search-icon {
-  position: absolute;
-  top: 45.5%;
-  right: -39%;
-  width: 32px;
-  height: 28px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.search-bar:focus {
-  outline: none; /* Remove the blue outline when the search box is focused */
-}
-
-.schools-dropdown {
-  font-family: 'Pastel Crayon', sans-serif;
-  position: absolute;
-  top: 90%;
-  left: 1px;
-  width: 142%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  display: none;
-  z-index: 1;
-  background-color: #feff9c;
-}
-
-.school-option {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #ccc;
-}
-
-.signbutton {
-    display: inline-block;
-    background-image: url('/images/signup.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: calc(0.48 * 272px); /* Width of the image */
-    height: calc(0.48 * 92px);
-    position: absolute;
-    top: 62.8%;
-    left: 50%;
-    transform: translate(-40%, 0%);
-    display: flex;
-    align-items: center;
-    z-index: 1;
-} 
-
-.signbutton:hover {
-  transform: translate(-40%, -5%);
-  /* Move the button upward slightly on hover */
-}
-
-.button:hover {
-  background-color: #6495ED;
-}
-
-.logbutton {
-    display: inline-block;
-    background-image: url('/images/login.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: calc(0.75 * 214px); /* Width of the image */
-    height: calc(0.65 * 88px); /* Height of the image */
-    position: absolute;
-    top: 63%;
-    left: 50%;
-    transform: translate(-47%, 0%);
-    display: flex;
-    align-items: center;
-    z-index: 1;
-}
-
-.logbutton:hover {
-  transform: translate(-47%, -5%);
-  /* Move the button upward slightly on hover */
-}
-
-h2 {
-  font-family: 'Pastel Crayon', sans-serif;
-  font-size: 20px;
-  position: absolute;
-  top: 76.5%;
-  left: 50%;
-  transform: translate(-47.75%, 0%);
-  color: #939393;
+  flex-direction: column;
 }
 
 .popup-container {
@@ -174,6 +34,50 @@ h2 {
   font-family: 'Pastel Crayon', sans-serif;
 }
 
+h2{
+  font-weight: 599
+}
+
+#login-error {
+  color: red;
+  font-size: 13px;
+  margin: -1px;
+  max-width: 200%;
+}
+
+#create-account-error {
+  color: red;
+  font-size: 15px;
+  margin-top: -10px;
+  margin-bottom: 0px;
+  max-width: 200%;
+}
+
+#submit-button{
+  background-color: #14E66C
+}
+
+#crush-button{
+  padding: 8px;
+  width: 40%;
+  transform: translate(75%, -15%);
+}
+
+.delete-crush {
+  position: absolute;
+  cursor: pointer;
+  left: -30px;
+  font-size: 20px;
+  color: red;
+  user-select: none;
+}
+
+.delete-crush:hover {
+  color: darkred;
+}
+
+
+
 .popup-container p {
   max-width: 300px;
   margin-bottom: 15px;
@@ -184,29 +88,10 @@ h2 {
   color: #555555;
 }
 
-/* Media Query for adjusting sizes for smaller screens */
-@media screen and (max-width: 768px) {
-  .popup-container {
-    padding: 3%;
-    border-radius: 3%;
-  }
-
-  .popup-container p {
-    font-size: 4vw;
-    max-width: 80vw;
-    margin-bottom: 3vw;
-  }
-
-  .popup-text {
-    font-size: 4vw;
-  }
-}
-
-
 .close-popup {
   position: absolute;
   top: 10px;
-  right: 10px;a
+  right: 10px;
   font-size: 18px;
   color: #666;
   cursor: pointer;
@@ -251,7 +136,219 @@ h2 {
 }
 
 #info-button:hover {
-transform: translate(0, -3.5%);
+  transform: translate(0, -3.5%);
+}
+
+#logo {
+  margin-top: -150px;
+  max-width: 370px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.login-container {
+  position: relative;
+  width: 255px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-container input {
+  padding: 15px;
+  width: 215px;
+  font-size: 17px;
+  border-radius: 5px;
+  border-width: 0px;
+  font-family: 'Pastel Crayon';
+  background-color: transparent;
+  background-image: url('/images/wide-box.png');
+  background-size: 245px; /* Adjust background size to fit the image */
+  background-position: 0px center;
+  background-repeat: no-repeat;
+  outline: none;
+}
+
+.crayon-line {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: -15px;
+  height: 6px;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#crushes-container {
+  transform: translate(10%, 0%);
+}
+
+.crush-input-wrapper {
+  width: 77%; /* Adjust this value as needed */
+  display: inline-block;
+  margin-right: 0%; 
+  display: flex;
+  align-items: center;
+}
+
+.crush-input-wrapper span {
+  font-size: 19px;
+  color: #333;
+  margin-left: 5px;
+  margin-top: -6px;
+}
+
+
+
+.modal-content button:hover {
+  transform: translate(0, -3%);
+}
+
+.login-container button {
+  padding: 25px;
+  font-size: 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url('/images/loginbutton.png');
+  background-size: 243px; /* Adjust background size to fit the image */
+  background-position: 0px center;
+  background-repeat: no-repeat;
+  outline: none;
+  width: 243px;
+}
+
+.login-container button:hover {
+/*  background-color: #4169E1;*/
+  transform: translate(0, -5%);
+}
+
+.login-container hr {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 0;
+}
+
+#create-account {
+  background-image: url('/images/createbutton.png');
+  background-size: 243px; /* Adjust background size to fit the image */
+  background-position: 0px center;
+  background-repeat: no-repeat;
+}
+
+#create-account:hover {
+  transform: translate(0, -5%);
+}
+
+.modal {
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.modal-content input {
+  font-family: 'Pastel Crayon';
+  font-size: 17px; /* Adjust the font size as needed */
+  padding: 10px;
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+}
+
+.modal-content button {
+  font-family: 'Pastel Crayon';
+  font-size: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6495ED; /* Customize button color */
+  color: white;
+  cursor: pointer;
+}
+
+.modal-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-tab input[readonly] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.modal-tab input#peer-email {
+  display: inline-block;
+  width: calc(100% - 120px); /* Adjust according to the width of @school.edu */
+  margin-right: -4px; /* To align with the domain */
+}
+
+.modal-tab input#peer-email + span {
+  display: inline-block;
+  width: 120px; /* Same width as the margin-right of the input */
+}
+
+
+.activity-indicator {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #6495ED;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; /* Adjust the value to position it exactly where you want */
+  left: 10px; /* Adjust the value to position it exactly where you want */
+  font-size: 20px; /* Adjust the font size as needed */
+  color: #000; /* Color of the close button */
+  cursor: pointer; /* Cursor changes to pointer when hovering over the button */
+  z-index: 1; /* Ensure it stays on top of the modal content */
+}
+
+.close-button:hover {
+  color: #ff0000; /* Optional: Change color when hovered over */
 }
 
 

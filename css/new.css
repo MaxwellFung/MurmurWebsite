@@ -19,20 +19,58 @@ button:hover {
   /* You may include additional src declarations for other font formats like woff, woff2, etc. */
 }
 
-body{
-  position: relative;
-  height: 100vh;
-  background-color: #ffffff;
-  background-image: url("/images/paper.png");
-  background-size: cover;
+body {
+    font-family: 'Pastel Crayon', sans-serif; 
+  display: flex;
+  justify-content: center;
+}
+
+h2{
+  color: #6495ED;
+  margin-bottom: 4px;
+  font-family: 'Pastel Crayon', sans-serif; 
+  font-size: 36px;
+  font-weight: 599;
+}
+
+.notif-container{
+  margin-top: 100px;
+  text-align:center;
+  width: 550px;
+}
+
+.notification-container {
+    height: 300px;
+    background-color: #f0f0f0; /* Grey background color */
+    padding: 10px; /* Add some padding around the notifications */
+    border-radius: 5px; /* Add rounded corners */
+    position: relative; /* Add relative positioning for absolute popup */
+    font-size: 25px;
+    font-family: 'Pastel Crayon', sans-serif;
+    border: 3px solid #ccc;
+}
+
+.name-input{
+  width: 187px; /* Increase width to accommodate the image and border */
+  padding: 12px; /* Adjust padding to ensure the image fits well */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 0px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  background-color: transparent;
+  background-image: url('/images/box.png');
+  background-size: 185px; /* Adjust background size to fit the image */
+  background-position: 0px center; /* Center the background image horizontally */
   background-repeat: no-repeat;
-  overflow: hidden;
+  font-family: 'Pastel Crayon', sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 .crush-input,
-.name-input,
 .crushemail-input {
-  width: 177px; /* Increase width to accommodate the image and border */
+  width: 231px; /* Increase width to accommodate the image and border */
   padding: 12px; /* Adjust padding to ensure the image fits well */
   margin-top: 10px;
   margin-bottom: 10px;
@@ -40,88 +78,19 @@ body{
   border-radius: 6px;
   outline: none;
   background-color: transparent;
-  background-image: url('/images/box.png');
-  background-size: 175px; /* Adjust background size to fit the image */
+  background-image: url('/images/wide-box.png');
+  background-size: 230px; /* Adjust background size to fit the image */
   background-position: 0px center; /* Center the background image horizontally */
   background-repeat: no-repeat;
   font-family: 'Pastel Crayon', sans-serif;
   font-size: 16px;
   box-sizing: border-box;
-}
-
-.schoolInput{
-  width: 177px; /* Increase width to accommodate the image and border */
-  padding: 12px; /* Adjust padding to ensure the image fits well */
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: -10/5px;
-  border: 0px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-  background-color: transparent;
-  background-image: url('/images/box.png');
-  background-size: 175px; /* Adjust background size to fit the image */
-  background-position: 0px center; /* Center the background image horizontally */
-  background-repeat: no-repeat;
-  font-family: 'Pastel Crayon', sans-serif;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-
-.tab-container {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  margin-left: -8px;
-  background-color: #89CFF0;
-  display: flex;
-  justify-content: space-around;
-  padding: 30px 0;
-}
-
-.tab {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 24px;
-}
-
-
-#notificationCount {
-    background-color: red;
-    color: white;
-    font-size: 12px;
-    padding: 2px 5px;
-    border-radius: 50%;
-    margin-left: 2px; /* Adjust as needed */
-    position: relative; /* Add relative positioning */
-    top: -8px; /* Adjust the vertical position */
-  font-family: Arial, sans-serif;
-}
-
-.content {
-  display: none;
-  justify-content: center;
-  align-items: center; 
 }
 
 .active {
   display: block;
 }
 
-
-#content1 {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
-}
-
-#content1 img {
-  max-width: 300px; /* Set maximum width to 100% of its container */
-  height: auto; /* Maintain aspect ratio */
-}
 
 
 .input-group {
@@ -144,40 +113,12 @@ body{
   border-radius: 5px;
 }
 
-#content2 {
-  text-align: center;
-  font-size: 20px;
-}
-
-#content2 .profile-info {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
 #editButton {
     margin-top: 20px; /* Adjust the margin-top value as needed */
 }
 
 #deleteButton {
     margin-top: 20px; /* Adjust the margin-top value as needed */
-}
-
-#signButton{
-    margin-top: 7px;
-}
-
-.notification-container {
-    width: 80%; /* Set a default width for the notification box */
-    max-width: 500px; /* Set maximum width for larger screens */
-    height: 300px;
-    background-color: #f0f0f0; /* Grey background color */
-    padding: 10px; /* Add some padding around the notifications */
-    border-radius: 5px; /* Add rounded corners */
-    margin: 0 auto; /* Center the notification box horizontally */
-    position: relative; /* Add relative positioning for absolute popup */
-    font-size: 25px;
-    font-family: 'Pastel Crayon', sans-serif;
-    border: 3px solid #ccc;
 }
 
 h3{
@@ -189,21 +130,6 @@ h3{
   left: 50%; /* Set left position to 50% */
   transform: translateX(-50%);
 }
-
-/* Adjust the width for smaller screens */
-@media screen and (max-width: 768px) {
-    .notification-container {
-        width: 90%; /* Decrease width for smaller screens */
-    }
-}
-
-/* Adjust the width for even smaller screens */
-@media screen and (max-width: 576px) {
-    .notification-container {
-        width: 90%; /* Decrease width further for very small screens */
-    }
-}
-
 
 
 .notification {
@@ -221,6 +147,92 @@ h3{
 
 .notification:hover {
     background-color: #f6f6f6; /* Change background color on hover */
+}
+
+
+.pastel-crayon-font {
+  font-family: 'Pastel Crayon', sans-serif;
+}
+
+
+.modal {
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  top: 15%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.sign-button{
+  position: absolute;
+  margin-top: auto;
+  left: 20px;
+  top: 45px;
+}
+
+.profile-name {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 18px;
+  font-family: 'Pastel Crayon', sans-serif; 
+}
+
+
+
+.crush-container span {
+  margin-right: 10px; /* Add some space between the number 
+  and the input */
+  margin-bottom: 50px;
+  font-family: 'Pastel Crayon', sans-serif; 
+  color: #6495ED;
+}
+
+
+
+.tab-active {
+  background-color: #A1D9E6; /* Light grey background */
+  border-radius: 5px;
 }
 
 .popup {
@@ -250,72 +262,4 @@ h3{
     left: 43.5%;
 }
 
-.pastel-crayon-font {
-  font-family: 'Pastel Crayon', sans-serif;
-}
-
-h2{
-  color: #6495ED;
-  margin-bottom: 4px;
-  font-family: 'Pastel Crayon', sans-serif; 
-  font-size: 36px;
-  font-weight: 599.9999;
-}
-
-
-
-
-.crush-container span {
-  margin-right: 10px; /* Add some space between the number 
-  and the input */
-  margin-bottom: 50px;
-  font-family: 'Pastel Crayon', sans-serif; 
-  color: #6495ED;
-}
-
-.profile-info span {
-  margin-right: -0px; /* Add some space between the number 
-  and the input */
-  margin-bottom: 50px;
-  font-family: 'Pastel Crayon', sans-serif; 
-  color: #6495ED;
-}
-
-.tab-active {
-  background-color: #A1D9E6; /* Light grey background */
-  border-radius: 5px;
-}
-
-.search-bar {
-  font-family: 'Pastel Crayon', sans-serif;
-  flex: 1;
-  padding: 10px;
-  font-size: 17px;
-  border: 0px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  color: #6C8EBF; /* Pastel pink text color */
-  z-index: 10;
-}
-
-.schools-dropdown {
-  font-family: 'Pastel Crayon', sans-serif;
-  position: absolute;
-  top: 31%;
-  left: 114px;
-  width: 52%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  display: none;
-  z-index: 100;
-  background-color: #feff9c;
-}
-
-.school-option {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #ccc;
-  z-index: 100;
-}
 

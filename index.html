@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<form autocomplete="off" method="post" action="">
-  <input autocomplete="false" name="hidden" type="text" style="display:none;">
 <head>
   <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Murmur</title>
-  <link rel="stylesheet" href="/js/pastel.ttf">
-	<script src="/js/main.js" defer type="module"></script>
-	<script src="/js/index.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Murmur Match</title>
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
   <link rel="stylesheet" href="/css/index.css">
-  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <script src="/js/index.js" defer type="module"></script>
 </head>
 <body>
   <img id="logo" src="/images/logo.png" alt="Logo">
   <div id="info-button" class="info-icon"></div>
   <div id="donate-button" class="donate-icon"></div>
-    <a href="#" id="google-login-button" class="logbutton"></a>
+  <div class="login-container">
+    <form autocomplete="off" method="post" action="">
+      <input type="text" placeholder="School Email" autocomplete="new-password" required>
+      <input type="password"  placeholder="Password" autocomplete="new-password" required>
+      <p id="login-error" style="color: red; display: none;"></p>
+      <button id="login" type="button" onclick="loginUser()"></button>
+      
+      <img src="/images/crayonline.png" alt="Crayon Line" class="crayon-line">
+      
+      <button id="create-account" type="button" onclick="openCreateAccountModal()"></button>
+    </form>
+
+  </div>
+  
+  <div id="create-account-modal" class="modal">
+    <div class="modal-content">
+      <div id="create-account-step1" class="modal-tab">
+        <span class="close-button" onclick="closeCreateAccountModal()">✖</span>
+        <h2>Create Account</h2>
+        <input type="name" id="name" placeholder="First & Last Name" required>
+        <input type="email" id="school-email" placeholder="School Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+        <p id="create-account-error" style="color: red; display: none;"></p>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+      <div id="create-account-step2" class="modal-tab" style="display:none;">
+        <h2>Verify Your Email</h2>
+        <div class="activity-indicator"></div>
+        <p>Waiting for you to verify your email...</p>
+      </div>
+      <div id="create-account-step3" class="modal-tab" style="display:none;">
+        <h2>Input Crushes</h2>
+        <input type="text" id="login-email" readonly>
+        <div id="crushes-container">
+          <div class="crush-input-wrapper">
+            <input type="text" class="crush-email" placeholder="Peer's School Email" required>
+            <span class="email-domain"></span>
+          </div>
+        </div>
+        <button type="button" id="crush-button" onclick="addCrush()">Add Crush</button>
+        <button type="button" id="submit-button" onclick="submit()">Submit</button>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>
