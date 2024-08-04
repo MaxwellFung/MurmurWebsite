@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/css/new.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>  
+<body>
   <button id="profileButton" class="profile-button" style="padding: 5px;">
     <i class="fas fa-envelope" style="font-size: 45px; color: #feff9c;"></i>
   </button>
@@ -15,41 +15,43 @@
   <div>
     <button id="signButton" class="sign-button">Sign Out</button>
   </div>
-  
+  <div><button id="deleteButton" class="delete-acc-button">Delete Account</button></div>
+
   <div class="notif-container">
     <h2>Matches</h2>
-    
+
     <div class="notification-container">
       <div class="notification-box" id="notificationBox"></div>
-      <h3>*program runs daily at 8:00am</h3>
+      <h3>*new matches revealed 8:00am daily</h3>
     </div>
   </div>
-  
-  
+
   <div id="profileModal" class="modal">
     <div class="modal-content">
-      <span id="closeModal" class="close">&times;</span>
+      <span id="closeProfileModal" class="close">&times;</span>
       <h2>Edit Info</h2>
       <div class="profile-info">
         <div>
-            <span>Name:   </span><input type="text" class="name-input" id="nameInput" placeholder="Enter your name" disabled>
+            <span>Name: </span><input type="text" class="name-input" id="nameInput" placeholder="Enter your name" disabled>
         </div>
-        <div class="crush-container">
-          <div>
-              <span>1. </span>
-              <input type="text" class="crushemail-input" id="crush1email" placeholder="1st School Email" disabled>
-          </div>
-          <div>
-              <span>2. </span>
-              <input type="text" class="crushemail-input" id="crush2email" placeholder="2nd School Email" disabled>
-          </div>
-          <div>
-              <span>3. </span>
-              <input type="text" class="crushemail-input" id="crush3email" placeholder="3rd School Email" disabled>
-          </div>
-        </div>
+        <h4>Crush Email List</h4>
+        <div class="crush-container" id="crushContainer"></div>
+        <button id="addCrushButton" class="add-crush-button" disabled>Add Crush</button>
         <div><button id="editButton">Edit</button></div>
-        <div><button id="deleteButton">Delete Account</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="messageModal" class="modal">
+    <div class="message-modal-content">
+      <span id="closeMessageModal" class="close">&times;</span>
+      <div class="conversation-container">
+          <h2 class="conversation-heading"></h2>
+          <div id="messagesList" class="messages-list"></div>
+          <div class="input-container">
+              <input type="text" id="messageInput" placeholder="Type a message" />
+              <button id="sendMessageButton">Send</button>
+          </div>
       </div>
     </div>
   </div>
