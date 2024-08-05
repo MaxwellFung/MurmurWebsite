@@ -1,3 +1,5 @@
+import { Passwordless } from "amazon-cognito-passwordless-auth/react";
+
 var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 const createAccountModal = document.getElementById("create-account-modal");
 const step1 = document.getElementById("create-account-step1");
