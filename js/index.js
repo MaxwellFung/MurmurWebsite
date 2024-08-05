@@ -1,5 +1,6 @@
-import { Passwordless } from "amazon-cognito-passwordless-auth/react";
-
+import { Passwordless } from "amazon-cognito-passwordless-auth";
+import { requestSignInLink, signInWithLink } from "amazon-cognito-passwordless-auth/magic-link";
+require(style.css); 
 var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 const createAccountModal = document.getElementById("create-account-modal");
 const step1 = document.getElementById("create-account-step1");
@@ -15,6 +16,13 @@ let emailVerificationCheckInterval;
 
 const addCrushButton = document.getElementById("crush-button");
 const maxCrushes = 3;
+
+Passwordless.configure({
+  cognitoIdpEndpoint: "us-east-2", // you can also use the full endpoint URL, potentially to use a proxy
+  clientId: "7pims036f36i8ma91ch0e9q6j3",
+  userPoolId: "us-east-2_0lFvLnkfv",
+  storage: localStorage, // Optional, default to localStorage
+});
 
 createAccountModal.style.display = "none";
 window.openCreateAccountModal = function() {
@@ -96,95 +104,23 @@ window.nextStep = async function() {
   }
 
   try { 
-    const userPoolConf = {
-      UserPoolId: 'us-east-2_nyg2BPFZV', 
-      ClientId: '1g3uv8hakbpe6hi6unl5148pho' 
-    };
 
-    const userPool = new AmazonCognitoIdentity.CognitoUserPool(userPoolConf); 
-
-    const attributeList = [];
-    const userEmail = {
-      Name: 'email',
-      Value: email,
-    };
-    const userName = { 
-      Name: 'given_name', 
-      Value : name,
-    };
-    const userEmailAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(userEmail);
-    const userNameAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(userName); 
-    attributeList.push(userEmailAttribute); 
-    attributeList.push(userNameAttribute); 
-
-    userPool.signUp(email, password, attributeList, null, function(
-      err,
-      result
-    ) {
-      if (err) {
-        handleError(err); 
-      }
-
-      const cognitoUser = result.user;
-      console.log(cognitoUser); 
-
-      step1.style.display = "none";
-      step2.style.display = "flex";
-
-      emailVerificationCheckInterval = setInterval(async () => {
-        cognitoUser.getSession((err, session) => {
-          if (err) {
-            handleError(err); 
-            return;
-          }
-
-          cognitoUser.getUserAttributes((err, attributes) => {
-            if (err) {
-              handleError(err); 
-              return;
-            }
-
-            const emailVerified = attributes.find(attr => attr.Name === 'email_verified').Value === 'true';
-            if (emailVerified) {
-              clearInterval(emailVerificationCheckInterval);
-              step2.style.display = "none";
-              step3.style.display = "flex";
-              document.getElementById("login-email").value = cognitoUser.getUsername();
-            }
-          });
-        });
-      }, 3000);
-
-      //idk what this part does ngl 
-
-      const schoolEmail = document.getElementById("school-email").value;
-      const domain = schoolEmail.split("@")[1];
-      const emailDomainSpans = document.querySelectorAll('.email-domain');
-      emailDomainSpans.forEach(span => {
-        span.textContent = "@" + domain;
-      });
+    const { signInLinkRequested } = requestSignInLink({ email : email, given_name : name });
+    try {
+      await signInLinkRequested;
+      console.log("We've emailed you a secret sign-in link")
+    } catch(err) {
+      console.log("Oops", err)
+    }
+    
+    const { signedIn } = signInWithLink({
+      statusCb: console.log, // will log e.g. SIGNED_IN_WITH_LINK, NO_SIGNIN_LINK, SIGNIN_LINK_EXPIRED, ...
     });
-
-
-
-  /*
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    await sendEmailVerification(user);
-    step1.style.display = "none";
-    step2.style.display = "flex";
-
-    emailVerificationCheckInterval = setInterval(async () => {
-      const user = auth.currentUser;
-      await user.reload();
-      if (user.emailVerified) {
-        clearInterval(emailVerificationCheckInterval);
-        step2.style.display = "none";
-        step3.style.display = "flex";
-        document.getElementById("login-email").value = user.email;
-      }
-    }, 3000);
+    await signedIn;
+    
+    step2.style.display = "none";
+    step3.style.display = "flex";
+    document.getElementById("login-email").value = email; 
 
     const schoolEmail = document.getElementById("school-email").value;
     const domain = schoolEmail.split("@")[1];
@@ -192,8 +128,9 @@ window.nextStep = async function() {
     emailDomainSpans.forEach(span => {
       span.textContent = "@" + domain;
     });
-    
-  } */} catch (error) {
+
+      //idk what this part does ngl
+  } catch (error) {
     createAccountError.style.display = "block";
     createAccountError.textContent = error.message;
   }
